@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="httP://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+
+<th:block th:fragment="headerBlock">
+
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no"
+		charset="UTF-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</th:block>
+
+<title>Gestão de Pessoas :: Home</title>
+
+</head>
+<body>
+	<th:block th:fragment="navBar">
+		<nav class="navbar navbar-default navbar-static-top"
+			th:fragment="header">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/home">:: Home ::</a>
+				</div>
+				<div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li class="dropdown"><a href="#" class="dropdown-toggle"
+								data-toggle="dropdown"> Cadastro<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="/formFunc">Funcionários</a></li>
+									<li><a href="/cargos">Cargos</a></li>
+									<li><a href="/empresas">Empresas</a></li>
+								</ul></li>
+						</ul>
+						<ul class="nav navbar-right">
+							<li>
+								<form method="post" action="/logout">
+									<button type="submit">
+										<span th:if="${session.usuarioLogado != null}" th:text="${session.usuarioLogado.nome}"></span>
+										<span class="glyphicon glyphicon-log-out"></span> Sair
+									</button>
+								</form>
+							</li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+		</nav>
+	</th:block>
+	<!-- /.container -->
+
+
+</body>
+</html>

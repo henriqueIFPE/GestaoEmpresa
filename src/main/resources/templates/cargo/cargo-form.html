@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:replace="header :: headerBlock"></div>
+
+
+<body>
+
+	<!-- Table with panel -->
+	<div class="card card-cascade narrower">
+
+	<div th:replace="header :: navBar"></div>
+
+		<!--/Card image-->
+
+		<div class="px-4">
+
+			<div class="table-wrapper col-sm-12 col-md-8">
+				<h4>Cargos</h4>
+				<form action="/salvarCargo" method="post" th:object="${cargo}">
+					<input type="text" class="form-control"
+						th:field="*{nome}" placeholder="Nome">
+					<input type="number" class="form-control"
+						th:field="*{salario}" placeholder="Salário">
+					<div th:if="${mensagem != null}" th:text="${mensagem}" class="alert-success"></div>
+					<div th:if="${#fields.hasErrors('*')}">
+						<ul>
+							<li th:each="erro : ${#fields.errors('*')}" th:text="${erro}"
+								class="alert-danger">
+						</ul>
+					</div>
+					<button type="submit" class="btn btn-secondary">Salvar Funcionario</button>
+
+				</form>
+				<hr />
+
+				<!--Table-->
+				<table class="table table-hover mb-0">
+
+					<!--Table head-->
+					<thead>
+						<tr>
+							<th class="th-lg">Nome</th>
+							<th class="th-lg">Salário</th>
+							<th class="th-lg">Cadastrado em</th>
+							<th class="th-lg">+++</th>
+						</tr>
+					</thead>
+					<!--Table head-->
+
+					<!--Table body-->
+					<tbody>
+						<tr th:each="cargo : ${listaCargos}">
+							<td th:text="${cargo.nome}"></td>
+							<td th:text="${cargo.salario}"></td>
+							<td th:text="${#dates.format(cargo.dataCriacao, 'dd-MMM-yyyy hh:mm')}"></td>
+							<td><a href="">Editar</a> <a href="">Excluir</a>
+							</td>
+						</tr>
+
+					</tbody>
+					<!--Table body-->
+				</table>
+				<!--Table-->
+			</div>
+
+		</div>
+
+	</div>
+	<!-- Table with panel -->
+
+
+</body>
+</html>

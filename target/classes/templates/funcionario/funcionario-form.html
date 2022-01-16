@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns="http://www.w3.org/1999/xhtml">
+
+<div th:replace="header :: headerBlock"></div>
+
+
+<body>
+
+	<!-- Table with panel -->
+	<div class="card card-cascade narrower">
+
+	<div th:replace="header :: navBar"></div>
+
+		<!--/Card image-->
+
+		<div class="px-4">
+
+			<div class="table-wrapper col-sm-12 col-md-8">
+				<h4>FuncionÃ¡rios</h4>
+				<form th:action="${funcionario.codigo == null} ? @{/inserirFuncionario} : @{/editarFuncionario}" method="post" th:object="${funcionario}">
+					<input type="text" class="form-control"
+						th:field="*{matricula}" placeholder="MatrÃ­cula">
+					<input type="text" class="form-control"
+						th:field="*{nome}" placeholder="Nome">
+					<input type="text" class="form-control"
+						th:field="*{cpf}" placeholder="CPF">
+					<input type="date" class="form-control"
+						th:field="*{dataNascimento}" placeholder="Data de Nascimento">
+					
+					<select class="form-control" th:field="*{cargo}">
+						<option value="0">Selecione um cargo</option>
+						<option th:each="cargo : ${listaCargos}" th:value="${cargo.codigo}"
+							th:text="${cargo.nome}" />
+					</select> 
+					<select  class="form-control" th:field="*{empresa}">
+						<option value="0">Selecione uma empresa</option>
+						<option th:each="empresa : ${listaEmpresas}" th:value="${empresa.codigo}"
+							th:text="${empresa.nomeRazaoSocial}" />
+					</select> 
+					<div th:if="${mensagem != null}" th:text="${mensagem}" class="alert-success"></div>
+					<div th:if="${#fields.hasErrors('*')}">
+						<ul>
+							<li th:each="erro : ${#fields.errors('*')}" th:text="${erro}"
+								class="alert-danger">
+						</ul>
+					</div>
+					<input type="hidden" id="codigo"  th:value="${funcionario.codigo}">
+					<button type="submit" class="btn btn-secondary">Salvar Funcionario</button>
+
+				</form>
+				<hr />
+
+				<!--Table-->
+				<table class="table table-hover mb-0">
+
+					<!--Table head-->
+					<thead>
+						<tr>
+							<th class="th-lg">MatrÃ­cula</th>
+							<th class="th-lg">Nome</th>
+							<th class="th-lg">Cargo</th>
+							<th class="th-lg">Empresa</th>
+							<th class="th-lg">Cadastrado em</th>
+							<th class="th-lg">+++</th>
+						</tr>
+					</thead>
+					<!--Table head-->
+
+					<!--Table body-->
+					<tbody>
+						<tr th:each="func : ${listaFuncionarios}">
+							<td th:text="${func.matricula}"></td>
+							<td th:text="${func.nome}"></td>
+							<td th:text="${func.cargo.nome}"></td>
+							<td th:text="${func.empresa.nomeRazaoSocial}"></td>
+							<td th:text="${#dates.format(func.dataCriacao, 'dd-MMM-yyyy hh:mm')}"></td>
+							<td><a th:href="@{/formFunc/editar/{codigo}(codigo=${func.codigo})}">Editar</a> 
+							<a th:href="@{/formFunc/excluirFuncionario/{codigo}(codigo=${func.codigo})}">Excluir</a>
+							</td>
+						</tr>
+
+					</tbody>
+					<!--Table body-->
+				</table>
+				<!--Table-->
+			</div>
+
+		</div>
+
+	</div>
+	<!-- Table with panel -->
+
+
+</body>
+</html>
