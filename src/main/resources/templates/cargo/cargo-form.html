@@ -17,7 +17,7 @@
 
 			<div class="table-wrapper col-sm-12 col-md-8">
 				<h4>Cargos</h4>
-				<form action="/salvarCargo" method="post" th:object="${cargo}">
+				<form th:action="@{/salvarCargo}" method="post" th:object="${cargo}">
 					<input type="text" class="form-control"
 						th:field="*{nome}" placeholder="Nome">
 					<input type="number" class="form-control"
@@ -29,6 +29,7 @@
 								class="alert-danger">
 						</ul>
 					</div>
+					<input type="hidden" id="codigo" th:field="*{codigo} >
 					<button type="submit" class="btn btn-secondary">Salvar Funcionario</button>
 
 				</form>
@@ -54,7 +55,8 @@
 							<td th:text="${cargo.nome}"></td>
 							<td th:text="${cargo.salario}"></td>
 							<td th:text="${#dates.format(cargo.dataCriacao, 'dd-MMM-yyyy hh:mm')}"></td>
-							<td><a href="">Editar</a> <a href="">Excluir</a>
+							<td><a th:href="@{/cargo/editar/{codigo} (codigo=${cargo.codigo}) }">Editar</a> 
+								<a href="">Excluir</a>
 							</td>
 						</tr>
 
