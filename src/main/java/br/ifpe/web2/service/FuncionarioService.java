@@ -76,4 +76,12 @@ public class FuncionarioService {
 	
 		return false;
 	}
+
+
+
+	public boolean existsByCargo(Integer codigo) {
+		return funcionarioDAO.existsByCargo(codigo);
+	}
+	
+	
 }

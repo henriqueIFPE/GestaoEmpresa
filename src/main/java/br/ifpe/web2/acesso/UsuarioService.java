@@ -22,7 +22,8 @@ public class UsuarioService {
 		usuario.setPerfil(Perfil.ADMINISTRADOR);
 		usuario.setNome("Administrador");
 		usuario.setSituacaoUsuario(SituacaoUsuario.ATIVO);
-
+		
+		
 		try {
 			inserirUsuario(usuario);
 		} catch (ServiceException e) {
@@ -30,6 +31,40 @@ public class UsuarioService {
 		}
 	}
 
+	public void criarUsuarioPadra() {
+		Usuario usuario = new Usuario();
+		usuario.setAtivo(true);
+		usuario.setLogin("henrique");
+		usuario.setSenha("henrique123");
+		usuario.setPerfil(Perfil.USUARIO_PADRAO);
+		usuario.setNome("Henrique");
+		usuario.setSituacaoUsuario(SituacaoUsuario.ATIVO);
+		
+		
+		try {
+			inserirUsuario(usuario);
+		} catch (ServiceException e) {
+			System.out.println("Usuário admin já existe");
+		}
+	}
+
+	public void criarUsuarioConsulta() {
+		Usuario usuario = new Usuario();
+		usuario.setAtivo(true);
+		usuario.setLogin("ranny");
+		usuario.setSenha("ranny123");
+		usuario.setPerfil(Perfil.APENAS_CONSULTA);
+		usuario.setNome("Ranielle");
+		usuario.setSituacaoUsuario(SituacaoUsuario.ATIVO);
+		
+		
+		try {
+			inserirUsuario(usuario);
+		} catch (ServiceException e) {
+			System.out.println("Usuário Consulta já existe");
+		}
+	}
+	
 	public void inserirUsuario(Usuario usuario) throws ServiceException {
 		usuario.setSenha(Util.md5(usuario.getSenha()));
 		usuario.setDataCriacao(new Date());
@@ -43,4 +78,6 @@ public class UsuarioService {
 	public long obterQuantidade() {
 		return this.usuarioDAO.count();
 	}
+	
+	
 }

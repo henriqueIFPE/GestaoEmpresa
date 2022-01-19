@@ -17,22 +17,24 @@
 
 			<div class="table-wrapper col-sm-12 col-md-8">
 				<h4>Cargos</h4>
-				<form th:action="@{/salvarCargo}" method="post" th:object="${cargo}">
-					<input type="text" class="form-control"
-						th:field="*{nome}" placeholder="Nome">
-					<input type="number" class="form-control"
-						th:field="*{salario}" placeholder="Salário">
-					<div th:if="${mensagem != null}" th:text="${mensagem}" class="alert-success"></div>
-					<div th:if="${#fields.hasErrors('*')}">
-						<ul>
-							<li th:each="erro : ${#fields.errors('*')}" th:text="${erro}"
-								class="alert-danger">
-						</ul>
-					</div>
-					<input type="hidden" id="codigo" th:field="*{codigo} >
-					<button type="submit" class="btn btn-secondary">Salvar Funcionario</button>
-
-				</form>
+				<div th:if="${session.usuarioLogado.perfil == T(br.ifpe.web2.acesso.Perfil).ADMINISTRADOR}">
+					<form th:action="@{/salvarCargo}" method="post" th:object="${cargo}">
+						<input type="text" class="form-control"
+							th:field="*{nome}" placeholder="Nome">
+						<input type="number" class="form-control"
+							th:field="*{salario}" placeholder="Salário">
+						<div th:if="${mensagem != null}" th:text="${mensagem}" class="alert-success"></div>
+						<div th:if="${#fields.hasErrors('*')}">
+							<ul>
+								<li th:each="erro : ${#fields.errors('*')}" th:text="${erro}"
+									class="alert-danger">
+							</ul>
+						</div>
+						
+						<button type="submit" class="btn btn-secondary">Salvar Funcionario</button>
+	
+					</form>
+				</div>
 				<hr />
 
 				<!--Table-->
@@ -55,7 +57,8 @@
 							<td th:text="${cargo.nome}"></td>
 							<td th:text="${cargo.salario}"></td>
 							<td th:text="${#dates.format(cargo.dataCriacao, 'dd-MMM-yyyy hh:mm')}"></td>
-							<td><a th:href="@{/cargo/editar/{codigo} (codigo=${cargo.codigo}) }">Editar</a> 
+							<td th:if="${session.usuarioLogado.perfil == T(br.ifpe.web2.acesso.Perfil).ADMINISTRADOR}">
+								<a th:href="@{/cargo/editar/{codigo} (codigo=${cargo.codigo}) }">Editar</a> 
 								<a href="">Excluir</a>
 							</td>
 						</tr>

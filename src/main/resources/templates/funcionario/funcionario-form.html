@@ -17,7 +17,8 @@
 		<div class="px-4">
 
 			<div class="table-wrapper col-sm-12 col-md-8">
-				<h4>FuncionÃ¡rios</h4>
+				<h4>Funcionarios</h4>
+				<div th:if="${session.usuarioLogado.perfil == T(br.ifpe.web2.acesso.Perfil).ADMINISTRADOR}">
 				<form th:action="${funcionario.codigo == null} ? @{/inserirFuncionario} : @{/editarFuncionario}" method="post" th:object="${funcionario}">
 					<input type="text" class="form-control"
 						th:field="*{matricula}" placeholder="MatrÃ­cula">
@@ -49,11 +50,8 @@
 					<button type="submit" class="btn btn-secondary">Salvar Funcionario</button>
 
 				</form>
-				<hr />
-
-				<!--Table-->
-				<table class="table table-hover mb-0">
-
+				</div>
+				<table>
 					<!--Table head-->
 					<thead>
 						<tr>

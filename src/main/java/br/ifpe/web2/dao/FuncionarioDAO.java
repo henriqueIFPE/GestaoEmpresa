@@ -7,6 +7,12 @@ import br.ifpe.web2.model.cadastro.Funcionario;
 public interface FuncionarioDAO extends JpaRepository<Funcionario, Integer>{
 
 	public Funcionario findByCpf(String cpf);
+
+	public boolean existsByCargo(Integer codigo);
+
+	
+	
+	
 	
 	
 }

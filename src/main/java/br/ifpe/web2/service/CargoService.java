@@ -29,6 +29,9 @@ public class CargoService {
 	}
 	
 	public void inserirCargo(Cargo cargo) throws ServiceException {
+		
+		
+		
 		if (this.cargoDAO.existsByNome(cargo.getNome()) == false) {
 			cargo.setAtivo(true);
 			cargo.setDataCriacao(new Date());

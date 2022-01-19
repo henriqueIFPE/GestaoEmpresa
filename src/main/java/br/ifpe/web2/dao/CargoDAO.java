@@ -12,8 +12,12 @@ public interface CargoDAO extends JpaRepository<Cargo, Integer>{
 	public List<Cargo> findByAtivoIsTrue(Sort sort);
 	
 	public boolean existsByNome(String nome);
+	
+	
+	
+	//public Cargo findByCargo(double salario);
 
-
+	
 	
 
 }

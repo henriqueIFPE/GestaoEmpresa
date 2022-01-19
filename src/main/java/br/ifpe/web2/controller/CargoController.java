@@ -28,8 +28,7 @@ public class CargoController {
 	}
 	
 	@PostMapping("/salvarCargo")
-	public String salvarCargo(Cargo cargo, Model model, BindingResult br,
-			RedirectAttributes ra) {
+	public String salvarCargo(Cargo cargo, Model model, BindingResult br,RedirectAttributes ra) {
 		try {
 			this.service.inserirCargo(cargo);
 		} catch (ServiceException e) {

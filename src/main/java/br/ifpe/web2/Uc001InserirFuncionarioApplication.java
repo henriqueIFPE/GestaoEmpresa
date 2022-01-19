@@ -29,6 +29,8 @@ public class Uc001InserirFuncionarioApplication implements CommandLineRunner{
 		System.out.println("Qtd usuários: " + this.usuarioService.obterQuantidade());
 		System.out.println("Criando usuário admin");
 		this.usuarioService.criarUsuarioAdmin();
+		this.usuarioService.criarUsuarioPadra();
+		this.usuarioService.criarUsuarioConsulta();
 		System.out.println("Qtd usuários: " + this.usuarioService.obterQuantidade());
 		
 		System.out.println("Criando cargos");
