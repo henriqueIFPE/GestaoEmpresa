@@ -38,15 +38,22 @@ public class CargoController {
 		return "redirect:/cargos";
 	}
 	
-	@GetMapping("/editar/{codigo}")
+	@GetMapping("/cargoEditar{codigo}")
 	public String preEditarCargo(@PathVariable("codigo") Integer codigo, ModelMap model) {
-		this.service.buscarPorId(codigo);
-		return "exibirCargos";
+
+		model.addAttribute("cargo", this.service.buscarPorId(codigo));
+		return "cargo/cargo-alterar";
 	}
 
-	@PostMapping("cargo/editar")
+	/*@PostMapping("cargo/editar")
 	public String EditarCargo() {
 	return null;	
+	}*/
+	
+	@GetMapping("/excluirCargo")
+	public String excluirCargo(Integer codigo) {
+		this.service.deletarPorId(codigo);
+		return "redirect:/cargos";
 	}
 	
 	

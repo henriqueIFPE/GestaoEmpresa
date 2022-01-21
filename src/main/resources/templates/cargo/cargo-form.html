@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
 <div th:replace="header :: headerBlock"></div>
@@ -58,8 +58,8 @@
 							<td th:text="${cargo.salario}"></td>
 							<td th:text="${#dates.format(cargo.dataCriacao, 'dd-MMM-yyyy hh:mm')}"></td>
 							<td th:if="${session.usuarioLogado.perfil == T(br.ifpe.web2.acesso.Perfil).ADMINISTRADOR}">
-								<a th:href="@{/cargo/editar/{codigo} (codigo=${cargo.codigo}) }">Editar</a> 
-								<a href="">Excluir</a>
+								<a th:href="|cargoEditar?codigo=${cargo.codigo}|">Editar</a> 
+								<a th:href="|excluirCargo?codigo=${cargo.codigo}|">Excluir</a>
 							</td>
 						</tr>
 

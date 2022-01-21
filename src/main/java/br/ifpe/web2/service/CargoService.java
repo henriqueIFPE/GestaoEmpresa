@@ -31,6 +31,10 @@ public class CargoService {
 	public void inserirCargo(Cargo cargo) throws ServiceException {
 		
 		
+		if (this.cargoDAO.equals(cargo.getSalario()) == true ) {
+		
+			
+		}
 		
 		if (this.cargoDAO.existsByNome(cargo.getNome()) == false) {
 			cargo.setAtivo(true);
@@ -57,6 +61,11 @@ public class CargoService {
 	public Optional<Cargo> buscarPorId(Integer id) {
 		return cargoDAO.findById(id);
 	}
+
+	public void deletarPorId(Integer id) {
+		cargoDAO.deleteById(id);
+	}
+	
 	
 
 	

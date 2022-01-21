@@ -36,37 +36,6 @@
 					</form>
 				</div>
 				<hr />
-
-				<!--Table-->
-				<table class="table table-hover mb-0">
-
-					<!--Table head-->
-					<thead>
-						<tr>
-							<th class="th-lg">Nome</th>
-							<th class="th-lg">Salário</th>
-							<th class="th-lg">Cadastrado em</th>
-							<th class="th-lg">+++</th>
-						</tr>
-					</thead>
-					<!--Table head-->
-
-					<!--Table body-->
-					<tbody>
-						<tr th:each="cargo : ${listaCargos}">
-							<td th:text="${cargo.nome}"></td>
-							<td th:text="${cargo.salario}"></td>
-							<td th:text="${#dates.format(cargo.dataCriacao, 'dd-MMM-yyyy hh:mm')}"></td>
-							<td th:if="${session.usuarioLogado.perfil == T(br.ifpe.web2.acesso.Perfil).ADMINISTRADOR}">
-								<a th:href="|cargoEditar?codigo=${cargo.codigo}|">Editar</a> 
-								<a th:href="|excluirCargo?codigo=${cargo.codigo}|">Excluir</a>
-							</td>
-						</tr>
-
-					</tbody>
-					<!--Table body-->
-				</table>
-				<!--Table-->
 			</div>
 
 		</div>
