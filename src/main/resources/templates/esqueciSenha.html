@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Gestão de Pessoas :: Login</title>
+<title>Gestão de Pessoas Esqueci a senha</title>
 <div th:replace="header :: headerBlock"></div>
 </head>
 <body>
@@ -11,16 +11,13 @@
 		<div class="row">
 			<div class="col-sm-3 py-2"></div>
 			<div class="col-sm-5 py-2">
-				<h2>Gestão de Pessoas :: Login</h2>
+				<h2>Recupere sua senha</h2>
 				<div class="card bg-info text-white h-200">
 					<div class="card-body">
 						<div th:text="${mensagem}" th:if="${mensagem != null}"></div>
-						<form method="post" action="/efetuarLogin" th:object="${usuario}">
-							<input name="login" class="form-control" placeholder="Usuário" />
-							<input type="password" name="senha" class="form-control"
-								placeholder="Senha" />
-							<button class="btn btn-primary btn-block">Entrar</button>
-							<a href="/esqueci-senha">Esqueci minha senha</a>
+						<form method="post" action="/resetarSenha" th:object="${usuario}">
+							<input name="login" class="form-control" placeholder="Digite seu usuario" />
+							<button class="btn btn-primary btn-block">Resetar</button>
 						</form>
 					</div>
 				</div>

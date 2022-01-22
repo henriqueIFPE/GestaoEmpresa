@@ -7,4 +7,6 @@ public interface UsuarioDAO extends JpaRepository<Usuario, Integer>{
 	public Usuario findByLoginAndSenha(String login, String senha);
 	
 	public boolean existsByLogin(String login);
+	
+	public Usuario findByLogin(String login);
 }

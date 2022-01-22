@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.ifpe.web2.util.ServiceException;
 import br.ifpe.web2.util.Util;
 
 @Controller
@@ -15,6 +16,8 @@ public class LoginController {
 
 	@Autowired
 	private UsuarioDAO usuarioDAO;
+	
+	private UsuarioService UsuarioService;
 	
 	@GetMapping("/")
 	public String exibirIndex(Usuario usuario) {
@@ -55,5 +58,19 @@ public class LoginController {
 	public String acessoNegado() {
 		return "acesso-negado";
 	}
+	
+	@GetMapping("/esqueci-senha")
+	public String esqueciSenha() {
+		return "esqueciSenha";
+	}
+	
+	@PostMapping("/resetarSenha")
+	public String resetarSenha(Usuario usuario) throws ServiceException {
+		
+		 this.UsuarioService.resetarSenha(usuario.getLogin());
+		
+		return "redirec:/";
+	}
+	
 	
 }

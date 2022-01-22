@@ -13,9 +13,9 @@ public interface CargoDAO extends JpaRepository<Cargo, Integer>{
 	
 	public boolean existsByNome(String nome);
 	
+	//public double 
 	
 	
-	//public Cargo findByCargo(double salario);
 
 	
 	
