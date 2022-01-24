@@ -12,7 +12,7 @@ public class AutorizadorInterceptor implements HandlerInterceptor {
 	private static final boolean CONTROLAR_ACESSO = true;
 
 	private static final String[] RECURSOS_LIVRES = { "/", "/login", "/logout", "/novo-usuario", "/usuarios/form",
-			"/usuarios/salvar", "/efetuarLogin", "/acesso-negado" };
+			"/usuarios/salvar", "/efetuarLogin", "/acesso-negado", "/esqueci-senha", "/resetarSenha" };
 
 	private static final String PAGINA_ACESSO_NEGADO = "/acesso-negado";
 

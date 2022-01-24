@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ifpe.web2.util.ServiceException;
 import br.ifpe.web2.util.Util;
+
 
 @Controller
 public class LoginController {
@@ -64,12 +66,22 @@ public class LoginController {
 		return "esqueciSenha";
 	}
 	
-	@PostMapping("/resetarSenha")
-	public String resetarSenha(Usuario usuario) throws ServiceException {
+	//@RequestMapping(value = "resetarSenha", method = RequestMethod.POST)
+	 @PostMapping("/resetarSenha")
+	public String resetarSenha(Usuario usuario, RedirectAttributes ra) throws ServiceException {
 		
+		try {
 		 this.UsuarioService.resetarSenha(usuario.getLogin());
+		 ra.addFlashAttribute("mensagem","Senha do usuario " + usuario.getLogin() + "é user123");
 		
 		return "redirec:/";
+		 
+		}catch(ServiceException err){
+			err.printStackTrace();
+			ra.addAttribute("mensagem", err.getMessage());
+			return "redirec:/esqueci-senha";
+			
+		}
 	}
 	
 	

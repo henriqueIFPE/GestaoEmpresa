@@ -78,12 +78,12 @@ public class UsuarioService {
 		}
 	}
 	
+	//Metodo para resetar a senha do usuario
 	public void resetarSenha(String login) throws ServiceException{
 		
 		Usuario usuario = usuarioDAO.findByLogin(login);
 		if (usuario != null) {
-			String senha = USER123;
-			usuario.setSenha(Util.md5(senha));
+			usuario.setSenha(Util.md5(USER123));
 			usuarioDAO.save(usuario);
 		}else {
 			throw new ServiceException("Esse meliante não existe");

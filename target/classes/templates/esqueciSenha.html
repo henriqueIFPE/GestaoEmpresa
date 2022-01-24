@@ -14,8 +14,7 @@
 				<h2>Recupere sua senha</h2>
 				<div class="card bg-info text-white h-200">
 					<div class="card-body">
-						<div th:text="${mensagem}" th:if="${mensagem != null}"></div>
-						<form method="post" action="/resetarSenha" th:object="${usuario}">
+							<form method="post" action="/resetarSenha" th:object="${usuario}">
 							<input name="login" class="form-control" placeholder="Digite seu usuario" />
 							<button class="btn btn-primary btn-block">Resetar</button>
 						</form>
