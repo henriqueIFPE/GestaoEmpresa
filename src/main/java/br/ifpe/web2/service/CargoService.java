@@ -21,7 +21,7 @@ public class CargoService {
 	private CargoDAO cargoDAO;
 	
 	@Autowired
-	private FuncionarioDAO funcionarioDao;
+	private FuncionarioService funcService;
 
 	public List<Cargo> listarTodos(boolean ativo){
 		Sort sort = Sort.by("nome");
@@ -76,10 +76,10 @@ public class CargoService {
 	
 
 	public void deletarPorId(Integer codigo) throws ServiceException {
-		//if(funcionarioDao.existsByCargo(codigo)) {
+		if(funcService.existsByCargo(codigo)) {
 			cargoDAO.deleteById(codigo);
-		//}
-		//throw new ServiceException("Já tem há um funcionario com esse cargo");
+		}
+		throw new ServiceException("Já tem há um funcionario com esse cargo");
 	}
 	
 	

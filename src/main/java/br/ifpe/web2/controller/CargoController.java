@@ -65,17 +65,17 @@ public class CargoController {
 	@GetMapping("/excluirCargo")
 	public String excluirCargo(Integer codigo, RedirectAttributes ra) throws ServiceException {
 		
-		//try {
+		try {
 			
 			this.service.deletarPorId(codigo);
-		///	return "redirect:/cargos";
+			return "redirect:/cargos";
 			
-		//}catch(ServiceException exception){
+		}catch(ServiceException exception){
 		
-	//	exception.printStackTrace();
-	//	ra.addFlashAttribute("mensagemCargo", exception.getMessage());
+		exception.printStackTrace();
+		ra.addFlashAttribute("mensagemCargo", exception.getMessage());
 		
-	//	}
+		}
 		return "redirect:/cargos";
 	}
 	
