@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -14,12 +16,22 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.ifpe.web2.model.cadastro.Cargo;
 import br.ifpe.web2.service.CargoService;
 import br.ifpe.web2.util.ServiceException;
+import br.ifpe.web2.validator.CargoValidator;
 
 @Controller
 public class CargoController {
 
 	@Autowired
 	private CargoService service;
+	
+	
+	//------------------------------------------------------------------------------------//
+	/*@InitBinder
+	public void initBinder(WebDataBinder binder){
+		binder.addValidators(new CargoValidator());
+	}*/	
+	
+	//------------------------------------------------------------------------------------//
 	
 	@GetMapping("/cargos")
 	public String exibirCargos(Cargo cargo, Model model) {

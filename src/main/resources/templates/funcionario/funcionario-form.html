@@ -20,7 +20,7 @@
 				<h4>Funcionarios</h4>
 					<form th:action="${funcionario.codigo == null} ? @{/inserirFuncionario} : @{/editarFuncionario}" method="post" th:object="${funcionario}">
 						<input type="text" class="form-control"
-							th:field="*{matricula}" placeholder="MatrÃ­cula">
+							th:field="*{matricula}" placeholder="Matricula">
 						<input type="text" class="form-control"
 							th:field="*{nome}" placeholder="Nome">
 						<input type="text" class="form-control"

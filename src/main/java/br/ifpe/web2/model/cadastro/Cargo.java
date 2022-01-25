@@ -2,14 +2,19 @@ package br.ifpe.web2.model.cadastro;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import br.ifpe.web2.model.geral.ObjetoGeral;
 
 @Entity
 public class Cargo extends ObjetoGeral{
 	
+
 	@Column(length = 25, nullable = false)
 	private String nome;
+	
 	private double salario;
 	
 	public Cargo() {

@@ -34,7 +34,9 @@ public class CargoService {
 	
 	public void inserirCargo(Cargo cargo) throws ServiceException {
 		
-		if (cargo.getNome() != null) {	
+		String x= cargo.getNome();
+		
+		if (!(x.trim().isEmpty())) {	
 		
 			if (cargo.getSalario() >= 1000 ) {			
 				
