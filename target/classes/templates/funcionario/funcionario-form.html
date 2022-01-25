@@ -10,7 +10,7 @@
 	<!-- Table with panel -->
 	<div class="card card-cascade narrower">
 
-	<div th:replace="/../fragments/header :: navBar"></div>
+		<div th:replace="header :: navBar"></div>
 
 		<!--/Card image-->
 
@@ -18,43 +18,44 @@
 
 			<div class="table-wrapper col-sm-12 col-md-8">
 				<h4>Funcionarios</h4>
-				<form th:action="${funcionario.codigo == null} ? @{/inserirFuncionario} : @{/editarFuncionario}" method="post" th:object="${funcionario}">
-					<input type="text" class="form-control"
-						th:field="*{matricula}" placeholder="MatrÃ­cula">
-					<input type="text" class="form-control"
-						th:field="*{nome}" placeholder="Nome">
-					<input type="text" class="form-control"
-						th:field="*{cpf}" placeholder="CPF">
-					<input type="date" class="form-control"
-						th:field="*{dataNascimento}" placeholder="Data de Nascimento">
-					
-					<select class="form-control" th:field="*{cargo}">
-						<option value="0">Selecione um cargo</option>
-						<option th:each="cargo : ${listaCargos}" th:value="${cargo.codigo}"
-							th:text="${cargo.nome}" />
-					</select> 
-					<select  class="form-control" th:field="*{empresa}">
-						<option value="0">Selecione uma empresa</option>
-						<option th:each="empresa : ${listaEmpresas}" th:value="${empresa.codigo}"
-							th:text="${empresa.nomeRazaoSocial}" />
-					</select> 
-					<div th:if="${mensagem != null}" th:text="${mensagem}" class="alert-success"></div>
-					<div th:if="${#fields.hasErrors('*')}">
-						<ul>
-							<li th:each="erro : ${#fields.errors('*')}" th:text="${erro}"
-								class="alert-danger">
-						</ul>
-					</div>
-					<input type="hidden" id="codigo"  th:value="${funcionario.codigo}">
-					<button type="submit" class="btn btn-secondary">Salvar Funcionario</button>
-
-				</form>
-				</div>
-				<table>
+					<form th:action="${funcionario.codigo == null} ? @{/inserirFuncionario} : @{/editarFuncionario}" method="post" th:object="${funcionario}">
+						<input type="text" class="form-control"
+							th:field="*{matricula}" placeholder="MatrÃ­cula">
+						<input type="text" class="form-control"
+							th:field="*{nome}" placeholder="Nome">
+						<input type="text" class="form-control"
+							th:field="*{cpf}" placeholder="CPF">
+						<input type="date" class="form-control"
+							th:field="*{dataNascimento}" placeholder="Data de Nascimento">
+						
+						<select class="form-control" th:field="*{cargo}">
+							<option value="0">Selecione um cargo</option>
+							<option th:each="cargo : ${listaCargos}" th:value="${cargo.codigo}"
+								th:text="${cargo.nome}" />
+						</select> 
+						<select  class="form-control" th:field="*{empresa}">
+							<option value="0">Selecione uma empresa</option>
+							<option th:each="empresa : ${listaEmpresas}" th:value="${empresa.codigo}"
+								th:text="${empresa.nomeRazaoSocial}" />
+						</select> 
+						<div th:if="${mensagem != null}" th:text="${mensagem}" class="alert-success"></div>
+						<div th:if="${#fields.hasErrors('*')}">
+							<ul>
+								<li th:each="erro : ${#fields.errors('*')}" th:text="${erro}"
+									class="alert-danger">
+							</ul>
+						</div>
+						<input type="hidden" id="codigo"  th:value="${funcionario.codigo}">
+						<button type="submit" class="btn btn-secondary">Salvar Funcionario</button>
+	
+					</form>
+				
+				
+				<table class="table">
 					<!--Table head-->
 					<thead>
 						<tr>
-							<th class="th-lg">MatrÃ­cula</th>
+							<th class="th-lg">Matricula</th>
 							<th class="th-lg">Nome</th>
 							<th class="th-lg">Cargo</th>
 							<th class="th-lg">Empresa</th>
@@ -81,6 +82,7 @@
 					<!--Table body-->
 				</table>
 				<!--Table-->
+				
 			</div>
 
 		</div>
