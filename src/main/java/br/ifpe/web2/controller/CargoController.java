@@ -16,7 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.ifpe.web2.model.cadastro.Cargo;
 import br.ifpe.web2.service.CargoService;
 import br.ifpe.web2.util.ServiceException;
-import br.ifpe.web2.validator.CargoValidator;
+
 
 @Controller
 public class CargoController {

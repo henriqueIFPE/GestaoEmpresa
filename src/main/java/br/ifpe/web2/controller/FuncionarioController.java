@@ -82,4 +82,10 @@ public class FuncionarioController {
 		return "redirect:/formFunc";
 	}
 	
+	@GetMapping("/funcionarioEmpresa")
+	public String funcionarioEmpresa() {
+		
+		return "func_empresa";
+	}
+	
 }

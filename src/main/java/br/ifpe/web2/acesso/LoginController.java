@@ -19,6 +19,7 @@ public class LoginController {
 	@Autowired
 	private UsuarioDAO usuarioDAO;
 	
+	@Autowired
 	private UsuarioService UsuarioService;
 	
 	@GetMapping("/")
@@ -72,9 +73,9 @@ public class LoginController {
 		
 		try {
 		 this.UsuarioService.resetarSenha(usuario.getLogin());
-		 ra.addFlashAttribute("mensagem","Senha do usuario " + usuario.getLogin() + "é user123");
+		 ra.addFlashAttribute("mensagem","Senha do usuario " + usuario.getLogin() + " é user123");
 		
-		return "redirec:/";
+		return "redirect:/";
 		 
 		}catch(ServiceException err){
 			err.printStackTrace();
